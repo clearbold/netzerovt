@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script type="text/javascript" src="https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css" media="all" />
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <style type="text/css">
+        html, body {
+            font-family: Helvetica, Arial, sans-serif;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        #map-container {
+            background: #eee;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+    <script type="text/javascript">
+        var attribution_graphic = 'Map image from <a href="http://netzerovt.org">Net Zero VT</a>';
+        var attribution_mapbox = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, Imagery © <a href="http://mapbox.com">Mapbox</a>';
+
+        var tile_layer_graphic = 'http://mapwarper.net/maps/tile/15483/{z}/{x}/{y}.png';
+        var tile_layer_mapbox = 'https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png';
+
+        var mapbox_id = 'clearbold.16npjgao';
+
+        var map_center = [44.2605, -72.579];
+        var map_zoom = 17;
+
+        var map_graphic = L.tileLayer( tile_layer_graphic, { attribution: attribution_graphic } );
+        var map_mapbox = L.tileLayer( tile_layer_mapbox, {id: mapbox_id, attribution: attribution_mapbox});
+
+        // Give each layer a name in the UI.
+        var baseMaps = {
+            'Map': map_mapbox,
+            'Net Zero Graphic': map_graphic
+        };
+    </script>
+</head>
+<body>
+    <div id="map-container"><noscript>
+        <p>An interactive map resides here.</p>
+    </noscript></div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            // Load the map into the div specified.
+            var map = L.map('map-container', {layers:map_mapbox});
+
+            // Setting the map interaction defaults. I find that when using a map that fills the page, allowing zoom based on scroll wheel, which is also used to scroll up and down the page, is problematic.
+            map.dragging.enable();
+            map.touchZoom.disable();
+            map.doubleClickZoom.enable();
+            map.scrollWheelZoom.disable();
+
+            // Add the tile layer switcher control (toggler)
+            L.control.layers(baseMaps).addTo(map);
+
+            // Zoom and center in
+            // TODO: Make this dynamic based on the map's contents
+            map.setView(map_center, map_zoom);
+
+            $.getJSON( "datajson/parking.json", function (lots) {
+                $.each( lots.lots, function(i, $lot) {
+                    var $vertices = [];
+                    $.getJSON( "geojson/"+$lot.id+".geojson", function (geodata) {
+                        $.each(geodata.features, function(i, $feature) {
+                            $vertices.push([ $feature.geometry.coordinates[1], $feature.geometry.coordinates[0] ]);
+                        })
+                        var $polygon = L.polygon([ $vertices ], { color: '#b8100a' }).addTo(map);
+                        $polygon.bindPopup( '<p style="padding: 10px;">Lot name, number of spaces, size.</p>' );
+                    })
+                })
+            })
+        })
+    </script>
+</body>
+</html>

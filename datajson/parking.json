@@ -1,0 +1,12 @@
+---
+---
+{
+    "lots":
+    [
+    {% for lot in site.data.lots %}
+    {
+        "id" : "{{ lot.id }}"
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+    ]
+}
