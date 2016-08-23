@@ -70,8 +70,8 @@
                         $.each(geodata.features, function(i, $feature) {
                             $vertices.push([ $feature.geometry.coordinates[1], $feature.geometry.coordinates[0] ]);
                         })
-                        var $polygon = L.polygon([ $vertices ], { color: '#b8100a' }).addTo(map);
-                        $polygon.bindPopup( '<p style="padding: 10px;">Lot name, number of spaces, size.</p>' );
+                        var $polygon = L.polygon([ $vertices ], { color: $lot.color }).addTo(map);
+                        $polygon.bindPopup( '<p style="padding: 10px;">'+$lot.caption+'</p>' );
                     })
                 })
             })

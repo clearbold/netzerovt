@@ -3,55 +3,87 @@
     [
     
     {
-        "id" : "001"
+        "id" : "001",
+        "color" : "#b8100a",
+        "caption" : "Lot name, number of spaces, size."
     },
     
     {
-        "id" : "002"
+        "id" : "002",
+        "color" : "#b8100a",
+        "caption" : "Lot name, number of spaces, size."
     },
     
     {
-        "id" : "003"
+        "id" : "003",
+        "color" : "#b8100a",
+        "caption" : "Lot name, number of spaces, size."
     },
     
     {
-        "id" : "004"
+        "id" : "004",
+        "color" : "#b8100a",
+        "caption" : "Lot name, number of spaces, size."
     },
     
     {
-        "id" : "005"
+        "id" : "005",
+        "color" : "#b8100a",
+        "caption" : "Lot name, number of spaces, size."
     },
     
     {
-        "id" : "006"
+        "id" : "006",
+        "color" : "#b8100a",
+        "caption" : "Lot name, number of spaces, size."
     },
     
     {
-        "id" : "007"
+        "id" : "007",
+        "color" : "#b8100a",
+        "caption" : "Lot name, number of spaces, size."
     },
     
     {
-        "id" : "008"
+        "id" : "008",
+        "color" : "#b8100a",
+        "caption" : "Lot name, number of spaces, size."
     },
     
     {
-        "id" : "009"
+        "id" : "009",
+        "color" : "#b8100a",
+        "caption" : "Lot name, number of spaces, size."
     },
     
     {
-        "id" : "010"
+        "id" : "010",
+        "color" : "#b8100a",
+        "caption" : "Lot name, number of spaces, size."
     },
     
     {
-        "id" : "011"
+        "id" : "011",
+        "color" : "#b8100a",
+        "caption" : "Lot name, number of spaces, size."
     },
     
     {
-        "id" : "012"
+        "id" : "012",
+        "color" : "#b8100a",
+        "caption" : "Lot name, number of spaces, size."
     },
     
     {
-        "id" : "013"
+        "id" : "013",
+        "color" : "#b8100a",
+        "caption" : "Lot name, number of spaces, size."
+    },
+    
+    {
+        "id" : "014",
+        "color" : "#ed7116",
+        "caption" : "Taylor Street Development"
     }
     
     ]

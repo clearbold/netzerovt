@@ -5,7 +5,9 @@
     [
     {% for lot in site.data.lots %}
     {
-        "id" : "{{ lot.id }}"
+        "id" : "{{ lot.id }}",
+        "color" : "{{ lot.color }}",
+        "caption" : "{{ lot.caption }}"
     }{% unless forloop.last %},{% endunless %}
     {% endfor %}
     ]
